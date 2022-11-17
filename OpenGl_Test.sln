@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32126.317
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenGl_Test", "OpenGl_Test\OpenGl_Test.csproj", "{BAF9F26A-07B4-4307-836E-885D1E6EEECE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BAF9F26A-07B4-4307-836E-885D1E6EEECE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAF9F26A-07B4-4307-836E-885D1E6EEECE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAF9F26A-07B4-4307-836E-885D1E6EEECE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAF9F26A-07B4-4307-836E-885D1E6EEECE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2FA010D7-F0F8-4C6C-97F7-2735653FEC28}
+	EndGlobalSection
+EndGlobal
