@@ -129,10 +129,11 @@ namespace OpenGl_Test
             Gl.glVertex2d(12, 14);
             Gl.glVertex2d(12, 5);
 
-
-
+            //завершение режима рисования
             Gl.glEnd();
+            //ожидание конца визуализации
             Gl.glFlush();
+            //сигнал для перерисовка элемента 
             OpenGlWindow.Invalidate();
         }
     }
