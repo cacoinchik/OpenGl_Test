@@ -32,6 +32,8 @@
             this.Lab1 = new System.Windows.Forms.Button();
             this.Lab2 = new System.Windows.Forms.Button();
             this.Lab3 = new System.Windows.Forms.Button();
+            this.Lab4 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button2
@@ -46,7 +48,7 @@
             // 
             // Lab1
             // 
-            this.Lab1.Location = new System.Drawing.Point(12, 22);
+            this.Lab1.Location = new System.Drawing.Point(123, 72);
             this.Lab1.Name = "Lab1";
             this.Lab1.Size = new System.Drawing.Size(75, 23);
             this.Lab1.TabIndex = 4;
@@ -56,7 +58,7 @@
             // 
             // Lab2
             // 
-            this.Lab2.Location = new System.Drawing.Point(12, 86);
+            this.Lab2.Location = new System.Drawing.Point(303, 159);
             this.Lab2.Name = "Lab2";
             this.Lab2.Size = new System.Drawing.Size(75, 23);
             this.Lab2.TabIndex = 5;
@@ -66,7 +68,7 @@
             // 
             // Lab3
             // 
-            this.Lab3.Location = new System.Drawing.Point(12, 164);
+            this.Lab3.Location = new System.Drawing.Point(513, 214);
             this.Lab3.Name = "Lab3";
             this.Lab3.Size = new System.Drawing.Size(75, 23);
             this.Lab3.TabIndex = 6;
@@ -74,11 +76,33 @@
             this.Lab3.UseVisualStyleBackColor = true;
             this.Lab3.Click += new System.EventHandler(this.Lab3_Click);
             // 
+            // Lab4
+            // 
+            this.Lab4.Location = new System.Drawing.Point(668, 294);
+            this.Lab4.Name = "Lab4";
+            this.Lab4.Size = new System.Drawing.Size(75, 23);
+            this.Lab4.TabIndex = 7;
+            this.Lab4.Text = "Работа №4";
+            this.Lab4.UseVisualStyleBackColor = true;
+            this.Lab4.Click += new System.EventHandler(this.Lab4_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(339, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(122, 21);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Список работ";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.Lab4);
             this.Controls.Add(this.Lab3);
             this.Controls.Add(this.Lab2);
             this.Controls.Add(this.Lab1);
@@ -87,6 +111,7 @@
             this.Text = "Лабораторные работа по программированию графики";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -95,6 +120,8 @@
         private System.Windows.Forms.Button Lab1;
         private System.Windows.Forms.Button Lab2;
         private System.Windows.Forms.Button Lab3;
+        private System.Windows.Forms.Button Lab4;
+        private System.Windows.Forms.Label label1;
     }
 }
 

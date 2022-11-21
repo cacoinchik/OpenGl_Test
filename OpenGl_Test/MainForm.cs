@@ -42,6 +42,15 @@ namespace OpenGl_Test
             laba3.Show();
             this.Hide();
         }
+
+        private void Lab4_Click(object sender, EventArgs e)
+        {
+            var laba4 = new Laba4();
+            laba4.Show();
+            this.Hide();
+        }
         #endregion
+
     }
+    
 }
