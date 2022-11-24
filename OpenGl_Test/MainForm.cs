@@ -49,7 +49,16 @@ namespace OpenGl_Test
             laba4.Show();
             this.Hide();
         }
+
+        private void gr_edit_Click(object sender, EventArgs e)
+        {
+            var gr=new GrUi();
+            gr.Show();
+            this.Hide();
+        }
+
         #endregion
+
 
     }
     
