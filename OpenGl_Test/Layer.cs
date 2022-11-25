@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Drawing;
 using Tao.OpenGl;
 
@@ -127,6 +128,12 @@ namespace OpenGl_Test
 
             }
 
+        }
+
+        //установка текущего цвета для рисования в слое
+        public void SetColor(Color newColor)
+        {
+            ActiveColor = newColor;
         }
 
         // функция визуализации слоя 

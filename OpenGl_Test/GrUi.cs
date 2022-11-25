@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using Tao.FreeGlut;
 using Tao.OpenGl;
@@ -73,11 +74,48 @@ namespace OpenGl_Test
                 programmDrawingEngine.Drawing(e.X, Window.Height - e.Y);
         }
 
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            // устанавливаем стандартную кисть 4х4 
+            programmDrawingEngine.SetStandartBrush(4);
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            // устанавливаем специальную кисть 
+            programmDrawingEngine.SetSpecialBrush(0);
+        }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            // установить кисть из файла 
+            programmDrawingEngine.SetBrushFromFile("brush-1.bmp");
+        }
+
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var main=Application.OpenForms[0];
             main.Show();
             Close();
+        }
+
+        private void color1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (changeColor.ShowDialog() == DialogResult.OK)
+            {
+                color1.BackColor=changeColor.Color;
+                programmDrawingEngine.SetColor(color1.BackColor);
+            }
+        }
+
+        private void linkLabel1_MouseClick(object sender, MouseEventArgs e)
+        {
+            Color tmp = color1.BackColor;
+
+            color1.BackColor = color2.BackColor;
+            color2.BackColor = tmp;
+
+            programmDrawingEngine.SetColor(color1.BackColor);
         }
     }
 }

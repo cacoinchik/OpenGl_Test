@@ -1,11 +1,13 @@
-﻿
-using System;
-using System.Collections;
+﻿using System.Collections;
+using System.Drawing;
 
 namespace OpenGl_Test
 {
     class Engine
     {
+        // последний установленный цвет
+        private Color LastColorInUse;
+
         // размеры изображения 
         private int picture_size_x, picture_size_y;
 
@@ -48,7 +50,7 @@ namespace OpenGl_Test
             ActiveLayerNom = 0;
 
             // и создадим стандартную кисть 
-            standartBrush = new Brush();
+            standartBrush = new Brush(3,false);
 
         }
 
@@ -76,6 +78,31 @@ namespace OpenGl_Test
         {
             // вызываем функцию визуализации в нашем слое 
             ((Layer)Layers[0]).RenderImage();
+        }
+
+        // функция установки стандартной кисти, передается только размер 
+        public void SetStandartBrush(int SizeB)
+        {
+            standartBrush = new Brush(SizeB, false);
+        }
+
+        // функция установки специальной кисти 
+        public void SetSpecialBrush(int Nom)
+        {
+            standartBrush = new Brush(Nom, true);
+        }
+
+        // установка кисти из файла 
+        public void SetBrushFromFile(string FileName)
+        {
+            standartBrush = new Brush(FileName);
+        }
+
+        //функция установки активного цвета
+        public void SetColor(Color NewColor)
+        {
+            ((Layer)Layers[ActiveLayerNom]).SetColor(NewColor);
+            LastColorInUse = NewColor;
         }
     }
 }
