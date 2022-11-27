@@ -111,19 +111,32 @@ namespace OpenGl_Test
 
                 for (int bx = real_pos_draw_start_y; bx < boundary_y; bx++, count_y++)
                 {
-
-                    // получаем текущий цвет пикселя маски 
-                    Color ret = BR.myBrush.GetPixel(count_x, count_y);
-
-                    // цвет не красный 
-                    if (!(ret.R == 255 && ret.G == 0 && ret.B == 0))
+                    if (BR.IsBrushErase())
                     {
-                        // заполняем данный пиксель соответствующим из маски, используя активный цвет 
-                        DrawPlace[ax, bx, 0] = ActiveColor.R;
-                        DrawPlace[ax, bx, 1] = ActiveColor.G;
-                        DrawPlace[ax, bx, 2] = ActiveColor.B;
-                        DrawPlace[ax, bx, 3] = 0;
+                        // получаем текущий цвет пикселя маски 
+                        Color ret = BR.myBrush.GetPixel(count_x, count_y);
+
+                        // цвет не красный 
+                        if (!(ret.R == 255 && ret.G == 0 && ret.B == 0))
+                        {
+                            // заполняем данный пиксель соответствующим из маски, используя активный 
+                            DrawPlace[ax, bx, 3] = 1;
+                        }
+                       
                     }
+                    else
+                    {
+                        Color ret = BR.myBrush.GetPixel(count_x, count_y);
+
+                        if (!(ret.R == 255 && ret.G == 0 && ret.B == 0))
+                        {
+                            DrawPlace[ax, bx, 0] = ActiveColor.R;
+                            DrawPlace[ax, bx, 1] = ActiveColor.G;
+                            DrawPlace[ax, bx, 2] = ActiveColor.B;
+                            DrawPlace[ax, bx, 3] = 0;
+                        }
+                    }
+
                 }
 
             }
@@ -134,6 +147,12 @@ namespace OpenGl_Test
         public void SetColor(Color newColor)
         {
             ActiveColor = newColor;
+        }
+
+        //Получение текущего цвета
+        public Color GetColor()
+        {
+            return ActiveColor;
         }
 
         // функция визуализации слоя 

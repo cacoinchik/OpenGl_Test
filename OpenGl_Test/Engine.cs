@@ -50,15 +50,17 @@ namespace OpenGl_Test
             ActiveLayerNom = 0;
 
             // и создадим стандартную кисть 
-            standartBrush = new Brush(3,false);
+            standartBrush = new Brush(3, false);
 
         }
 
         // функция для установки номера активного слоя 
         public void SetActiveLayerNom(int nom)
         {
+            ((Layer)Layers[nom]).SetColor(((Layer)Layers[ActiveLayerNom]).GetColor());
             ActiveLayerNom = nom;
         }
+
 
         // установка видимости / невидимости слоя 
         public void SetWisibilityLayerNom(int nom, bool visible)
@@ -70,14 +72,15 @@ namespace OpenGl_Test
         public void Drawing(int x, int y)
         {
             // транслируем координаты, в которых проходит рисование, стандартной кистью 
-            ((Layer)Layers[0]).Draw(standartBrush, x, y);
+            ((Layer)Layers[ActiveLayerNom]).Draw(standartBrush, x, y);
         }
 
         // визуализация 
         public void SwapImage()
         {
             // вызываем функцию визуализации в нашем слое 
-            ((Layer)Layers[0]).RenderImage();
+            for (int ax = 0; ax < Layers.Count; ax++)
+                ((Layer)Layers[ax]).RenderImage();
         }
 
         // функция установки стандартной кисти, передается только размер 
@@ -103,6 +106,32 @@ namespace OpenGl_Test
         {
             ((Layer)Layers[ActiveLayerNom]).SetColor(NewColor);
             LastColorInUse = NewColor;
+        }
+
+        // функция добавления слоя 
+        public void AddLayer()
+        {
+            // добавляем слой в массив слоев ArrayList 
+            int AddingLayer = Layers.Add(new Layer(picture_size_x, picture_size_y));
+            // устанавливаем его активным 
+            SetActiveLayerNom(AddingLayer);
+        }
+
+        // функция удаления слоев 
+        public void RemoveLayer(int nom)
+        {
+            // если номер корректен (в диапазоне добавленных в ArrayList 
+            if (nom < Layers.Count && nom >= 0)
+            {
+                // делаем активным слой 0
+                SetActiveLayerNom(0);
+
+                // очищаем дисплейный список данного слоя
+                //((Layer)Layers[nom]).ClearList();
+
+                // удаляем запись о слое
+                Layers.RemoveAt(nom);
+            }
         }
     }
 }

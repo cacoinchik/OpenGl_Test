@@ -7,6 +7,8 @@ namespace OpenGl_Test
     {
         public Bitmap myBrush;
 
+        private bool IsErase=false;
+
         public Brush(int Value, bool Special)
         {
             if (!Special)
@@ -16,6 +18,7 @@ namespace OpenGl_Test
                 for (int ax = 0; ax < Value; ax++)
                     for (int bx = 0; bx < Value; bx++)
                         myBrush.SetPixel(0, 0, Color.Black);
+                IsErase = false;
             }
             else
             {
@@ -42,6 +45,19 @@ namespace OpenGl_Test
                             myBrush.SetPixel(3, 2, Color.Black);
                             myBrush.SetPixel(4, 2, Color.Black);
 
+                            IsErase=false;
+
+                            break;
+                        }
+                        case 1:
+                        {
+                            myBrush=new Bitmap(5, 5);
+
+                            for (int ax = 0; ax < Value; ax++)
+                                for (int bx = 0; bx < Value; bx++)
+                                    myBrush.SetPixel(0, 0, Color.Black);
+
+                            IsErase = true;
                             break;
                         }
                 }
@@ -53,6 +69,11 @@ namespace OpenGl_Test
             string path=Directory.GetCurrentDirectory();
             path += "" + FromFile;
             myBrush = new Bitmap(path);
+        }
+
+        public bool IsBrushErase()
+        {
+            return IsErase;
         }
 
 
