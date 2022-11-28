@@ -57,7 +57,11 @@ namespace OpenGl_Test
         // функция для установки номера активного слоя 
         public void SetActiveLayerNom(int nom)
         {
+            // текущий слой больше не будет активным, следовательно, надо создать новый дисплейный список для его быстрой визуализации 
+            ((Layer)Layers[ActiveLayerNom]).CreateNewList(); // новый активный слой получает установленный активный цвет для предыдущего активного слоя 
             ((Layer)Layers[nom]).SetColor(((Layer)Layers[ActiveLayerNom]).GetColor());
+
+            // установка номера активного слоя 
             ActiveLayerNom = nom;
         }
 
@@ -78,9 +82,22 @@ namespace OpenGl_Test
         // визуализация 
         public void SwapImage()
         {
+
             // вызываем функцию визуализации в нашем слое 
             for (int ax = 0; ax < Layers.Count; ax++)
-                ((Layer)Layers[ax]).RenderImage();
+            {
+                // если данный слой является активным в данный момент,
+                if (ax == ActiveLayerNom)
+                {
+                    // вызываем визуализацию данного слоя напрямую 
+                    ((Layer)Layers[ax]).RenderImage(false);
+                }
+                else
+                {
+                    // вызываем визуализацию слоя из дисплейного списка 
+                    ((Layer)Layers[ax]).RenderImage(true);
+                }
+            }
         }
 
         // функция установки стандартной кисти, передается только размер 
@@ -127,7 +144,7 @@ namespace OpenGl_Test
                 SetActiveLayerNom(0);
 
                 // очищаем дисплейный список данного слоя
-                //((Layer)Layers[nom]).ClearList();
+                ((Layer)Layers[nom]).ClearList();
 
                 // удаляем запись о слое
                 Layers.RemoveAt(nom);
