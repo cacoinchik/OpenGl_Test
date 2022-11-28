@@ -63,6 +63,16 @@ namespace OpenGl_Test.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _14328622641482479914add2 {
+            get {
+                object obj = ResourceManager.GetObject("14328622641482479914add2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _673665_tools_512x512 {
             get {
                 object obj = ResourceManager.GetObject("673665_tools_512x512", resourceCulture);
@@ -76,6 +86,16 @@ namespace OpenGl_Test.Properties {
         internal static System.Drawing.Bitmap LXMgj7kE0K0 {
             get {
                 object obj = ResourceManager.GetObject("LXMgj7kE0K0", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap minus_md {
+            get {
+                object obj = ResourceManager.GetObject("minus-md", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -29,11 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GrUi));
             this.Window = new Tao.Platform.Windows.SimpleOpenGlControl();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.новыйРисунокToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.изФайлаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.рисованиеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.карандашToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,23 +44,21 @@
             this.добавитьСлойToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.удалитьСлойToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
             this.LayersControl = new System.Windows.Forms.CheckedListBox();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
             this.renderTimer = new System.Windows.Forms.Timer(this.components);
             this.changeColor = new System.Windows.Forms.ColorDialog();
             this.color1 = new System.Windows.Forms.Panel();
             this.color2 = new System.Windows.Forms.Panel();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.изФайлаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
@@ -109,14 +108,28 @@
             // новыйРисунокToolStripMenuItem
             // 
             this.новыйРисунокToolStripMenuItem.Name = "новыйРисунокToolStripMenuItem";
-            this.новыйРисунокToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.новыйРисунокToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.новыйРисунокToolStripMenuItem.Text = "Новый рисунок";
             this.новыйРисунокToolStripMenuItem.Click += new System.EventHandler(this.новыйРисунокToolStripMenuItem_Click);
+            // 
+            // изФайлаToolStripMenuItem
+            // 
+            this.изФайлаToolStripMenuItem.Name = "изФайлаToolStripMenuItem";
+            this.изФайлаToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.изФайлаToolStripMenuItem.Text = "Из файла";
+            this.изФайлаToolStripMenuItem.Click += new System.EventHandler(this.изФайлаToolStripMenuItem_Click);
+            // 
+            // сохранитьToolStripMenuItem
+            // 
+            this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.сохранитьToolStripMenuItem.Text = "Сохранить";
+            this.сохранитьToolStripMenuItem.Click += new System.EventHandler(this.сохранитьToolStripMenuItem_Click);
             // 
             // выходToolStripMenuItem
             // 
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.выходToolStripMenuItem.Text = "Выход";
             this.выходToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
             // 
@@ -188,6 +201,86 @@
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
+            // LayersControl
+            // 
+            this.LayersControl.FormattingEnabled = true;
+            this.LayersControl.Location = new System.Drawing.Point(654, 27);
+            this.LayersControl.Name = "LayersControl";
+            this.LayersControl.Size = new System.Drawing.Size(143, 199);
+            this.LayersControl.TabIndex = 2;
+            this.LayersControl.SelectedValueChanged += new System.EventHandler(this.LayersControl_SelectedValueChanged);
+            // 
+            // toolStrip2
+            // 
+            this.toolStrip2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton4,
+            this.toolStripButton5});
+            this.toolStrip2.Location = new System.Drawing.Point(801, 24);
+            this.toolStrip2.Name = "toolStrip2";
+            this.toolStrip2.Size = new System.Drawing.Size(32, 426);
+            this.toolStrip2.TabIndex = 3;
+            this.toolStrip2.Text = "toolStrip2";
+            // 
+            // renderTimer
+            // 
+            this.renderTimer.Tick += new System.EventHandler(this.renderTimer_Tick);
+            // 
+            // color1
+            // 
+            this.color1.BackColor = System.Drawing.Color.Black;
+            this.color1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.color1.Controls.Add(this.color2);
+            this.color1.Location = new System.Drawing.Point(664, 246);
+            this.color1.Name = "color1";
+            this.color1.Size = new System.Drawing.Size(100, 100);
+            this.color1.TabIndex = 4;
+            this.color1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.color1_MouseClick);
+            // 
+            // color2
+            // 
+            this.color2.BackColor = System.Drawing.Color.Red;
+            this.color2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.color2.Location = new System.Drawing.Point(22, 46);
+            this.color2.Name = "color2";
+            this.color2.Size = new System.Drawing.Size(100, 100);
+            this.color2.TabIndex = 0;
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(688, 403);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(56, 13);
+            this.linkLabel1.TabIndex = 5;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "поменять";
+            this.linkLabel1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.linkLabel1_MouseClick);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // toolStripButton4
+            // 
+            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton4.Image = global::OpenGl_Test.Properties.Resources._14328622641482479914add2;
+            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton4.Name = "toolStripButton4";
+            this.toolStripButton4.Size = new System.Drawing.Size(29, 20);
+            this.toolStripButton4.Text = "toolStripButton4";
+            this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
+            // 
+            // toolStripButton5
+            // 
+            this.toolStripButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton5.Image = global::OpenGl_Test.Properties.Resources.minus_md;
+            this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton5.Name = "toolStripButton5";
+            this.toolStripButton5.Size = new System.Drawing.Size(29, 20);
+            this.toolStripButton5.Text = "toolStripButton5";
+            this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
+            // 
             // toolStripButton1
             // 
             this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -227,100 +320,6 @@
             this.toolStripButton6.Size = new System.Drawing.Size(21, 20);
             this.toolStripButton6.Text = "toolStripButton6";
             this.toolStripButton6.Click += new System.EventHandler(this.toolStripButton6_Click);
-            // 
-            // LayersControl
-            // 
-            this.LayersControl.FormattingEnabled = true;
-            this.LayersControl.Location = new System.Drawing.Point(654, 27);
-            this.LayersControl.Name = "LayersControl";
-            this.LayersControl.Size = new System.Drawing.Size(143, 199);
-            this.LayersControl.TabIndex = 2;
-            this.LayersControl.SelectedValueChanged += new System.EventHandler(this.LayersControl_SelectedValueChanged);
-            // 
-            // toolStrip2
-            // 
-            this.toolStrip2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton4,
-            this.toolStripButton5});
-            this.toolStrip2.Location = new System.Drawing.Point(809, 24);
-            this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(24, 426);
-            this.toolStrip2.TabIndex = 3;
-            this.toolStrip2.Text = "toolStrip2";
-            // 
-            // toolStripButton4
-            // 
-            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
-            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(21, 20);
-            this.toolStripButton4.Text = "toolStripButton4";
-            this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
-            // 
-            // toolStripButton5
-            // 
-            this.toolStripButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton5.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton5.Image")));
-            this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton5.Name = "toolStripButton5";
-            this.toolStripButton5.Size = new System.Drawing.Size(21, 20);
-            this.toolStripButton5.Text = "toolStripButton5";
-            this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
-            // 
-            // renderTimer
-            // 
-            this.renderTimer.Tick += new System.EventHandler(this.renderTimer_Tick);
-            // 
-            // color1
-            // 
-            this.color1.BackColor = System.Drawing.Color.Black;
-            this.color1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.color1.Controls.Add(this.color2);
-            this.color1.Location = new System.Drawing.Point(664, 246);
-            this.color1.Name = "color1";
-            this.color1.Size = new System.Drawing.Size(100, 100);
-            this.color1.TabIndex = 4;
-            this.color1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.color1_MouseClick);
-            // 
-            // color2
-            // 
-            this.color2.BackColor = System.Drawing.Color.Red;
-            this.color2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.color2.Location = new System.Drawing.Point(22, 46);
-            this.color2.Name = "color2";
-            this.color2.Size = new System.Drawing.Size(100, 100);
-            this.color2.TabIndex = 0;
-            // 
-            // linkLabel1
-            // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(688, 403);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(56, 13);
-            this.linkLabel1.TabIndex = 5;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "поменять";
-            this.linkLabel1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.linkLabel1_MouseClick);
-            // 
-            // изФайлаToolStripMenuItem
-            // 
-            this.изФайлаToolStripMenuItem.Name = "изФайлаToolStripMenuItem";
-            this.изФайлаToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.изФайлаToolStripMenuItem.Text = "Из файла";
-            this.изФайлаToolStripMenuItem.Click += new System.EventHandler(this.изФайлаToolStripMenuItem_Click);
-            // 
-            // сохранитьToolStripMenuItem
-            // 
-            this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.сохранитьToolStripMenuItem.Text = "Сохранить";
-            this.сохранитьToolStripMenuItem.Click += new System.EventHandler(this.сохранитьToolStripMenuItem_Click);
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // GrUi
             // 
